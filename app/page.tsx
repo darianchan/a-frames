@@ -5,6 +5,7 @@ import { NEXT_PUBLIC_URL } from './config';
 const frameMetadata = getFrameMetadata({
   buttons: [
     {
+      action: 'post',
       label: 'Button 1',
     },
     {
@@ -18,13 +19,13 @@ const frameMetadata = getFrameMetadata({
     },
   ],
   image: {
-    src: `https://a-frames-git-main-darianchan.vercel.app/'/Heading.png`,
+    src: `${NEXT_PUBLIC_URL}'/park-1.png`,
     aspectRatio: '1:1',
   },
   input: {
     text: 'Tell me a boat story',
   },
-  postUrl: `https://a-frames-git-main-darianchan.vercel.app/'/api/frame`,
+  postUrl: `${NEXT_PUBLIC_URL}'/api/frame`,
 });
 
 export const metadata: Metadata = {
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Darian.xyz',
     description: 'LFG',
-    images: [`https://a-frames-git-main-darianchan.vercel.app/'/Heading.png`],
+    images: [`${NEXT_PUBLIC_URL}'/park-1.png`],
   },
   other: {
     ...frameMetadata,

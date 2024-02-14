@@ -18,6 +18,22 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
     text = message.input;
   }
 
+  if (message?.button === 1) {
+    return new NextResponse(
+      getFrameHtmlResponse({
+        buttons: [
+          {
+            label: `Story$$$$$: ${text} 🌲`,
+          },
+        ],
+        image: {
+          src: `${NEXT_PUBLIC_URL}/park-1.png`,
+        },
+        postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
+      }),
+    );
+  }
+
   if (message?.button === 3) {
     return NextResponse.redirect(
       'https://www.google.com/search?q=cute+dog+pictures&tbm=isch&source=lnms',
@@ -43,9 +59,5 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
 export async function POST(req: NextRequest): Promise<Response> {
   return getResponse(req);
 }
-
-// export async function GET(req: NextRequest): Promise<Response> {
-//   return getResponse(req);
-// }
 
 export const dynamic = 'force-dynamic';
