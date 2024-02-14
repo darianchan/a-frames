@@ -18,13 +18,13 @@ const frameMetadata = getFrameMetadata({
     },
   ],
   image: {
-    src: `${NEXT_PUBLIC_URL}/Heading.png`,
+    src: `https://a-frames-git-main-darianchan.vercel.app/'/Heading.png`,
     aspectRatio: '1:1',
   },
   input: {
     text: 'Tell me a boat story',
   },
-  postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
+  postUrl: `https://a-frames-git-main-darianchan.vercel.app/'/api/frame`,
 });
 
 export const metadata: Metadata = {
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Darian.xyz',
     description: 'LFG',
-    images: [`${NEXT_PUBLIC_URL}/Heading.png`],
+    images: [`https://a-frames-git-main-darianchan.vercel.app/'/Heading.png`],
   },
   other: {
     ...frameMetadata,
