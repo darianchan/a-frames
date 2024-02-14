@@ -63,6 +63,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
       ],
       image: {
         src: `${NEXT_PUBLIC_URL}/park-1.png`,
+        aspectRatio: '1:1',
       },
       postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
     }),
