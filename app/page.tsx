@@ -6,24 +6,24 @@ const frameMetadata = getFrameMetadata({
   buttons: [
     {
       action: 'post',
-      label: 'Button 1',
+      label: 'Auto',
     },
     {
-      action: 'link',
-      label: 'Link to Google',
-      target: 'https://www.google.com',
+      action: 'post',
+      label: 'Busa',
     },
     {
-      label: 'Redirect to pictures',
-      action: 'post_redirect',
+      action: 'post',
+      label: 'Agua',
+    },
+    {
+      action: 'post',
+      label: 'Caro',
     },
   ],
   image: {
     src: `${NEXT_PUBLIC_URL}/park-3.png`,
     aspectRatio: '1:1',
-  },
-  input: {
-    text: 'Tell me a boat story',
   },
   postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
 });

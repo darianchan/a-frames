@@ -11,23 +11,36 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
 
   if (isValid) {
     accountAddress = message.interactor.verified_accounts[0];
-    console.log("look here",)
   }
 
   if (message?.input) {
     text = message.input;
   }
 
+  // it looks like all the buttons are indexed according to their order in the array
   if (message?.button === 1) {
     return new NextResponse(
       getFrameHtmlResponse({
         buttons: [
           {
-            label: `Story$$$$$: ${text} 🌲`,
+            action: 'post',
+            label: 'Conita',
+          },
+          {
+            action: 'post',
+            label: 'Dog',
+          },
+          {
+            action: 'post',
+            label: 'Bieber',
+          },
+          {
+            action: 'post',
+            label: 'Gato',
           },
         ],
         image: {
-          src: `${NEXT_PUBLIC_URL}/park-1.png`,
+          src: `${NEXT_PUBLIC_URL}/cat.png`,
         },
         postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
       }),
