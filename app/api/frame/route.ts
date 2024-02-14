@@ -11,7 +11,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
 
   if (isValid) {
     accountAddress = message.interactor.verified_accounts[0];
-    console.log("look here", accountAddress)
+    console.log("look here",)
   }
 
   if (message?.input) {
@@ -29,11 +29,11 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
     getFrameHtmlResponse({
       buttons: [
         {
-          label: `Story: ${text} 🌲`,
+          label: `Story$$$$$: ${text} 🌲`,
         },
       ],
       image: {
-        src: `${NEXT_PUBLIC_URL}/Heading.png`,
+        src: `${NEXT_PUBLIC_URL}/park-1.png`,
       },
       postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
     }),
