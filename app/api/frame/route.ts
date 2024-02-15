@@ -17,22 +17,10 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
     text = message.input;
   }
 
-  // it looks like all the buttons are indexed according to their order in the array
   if (message?.button === 1) {
     return catFrame();
   } else {
-
-  }
-
-  if (message?.button === 3) {
-    return NextResponse.redirect(
-      'https://www.google.com/search?q=cute+dog+pictures&tbm=isch&source=lnms',
-      { status: 302 },
-    );
-  }
-
-  if (message?.button === 4) {
-    return pizzaFrame();
+    return catFrame();
   }
 
   return new NextResponse(
@@ -78,7 +66,7 @@ function catFrame() {
         src: `${NEXT_PUBLIC_URL}/cat.png`,
         aspectRatio: '1:1',
       },
-      postUrl: `${NEXT_PUBLIC_URL}/api/frame/cat.ts`,
+      postUrl: `${NEXT_PUBLIC_URL}/api/frame/pizza.ts`, // for next frame to return
     }),
   );
 }

@@ -18,20 +18,9 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
   }
 
   // it looks like all the buttons are indexed according to their order in the array
-  if (message?.button === 1) {
-    return catFrame();
-  } 
-
-  if (message?.button === 3) {
-    return NextResponse.redirect(
-      'https://www.google.com/search?q=cute+dog+pictures&tbm=isch&source=lnms',
-      { status: 302 },
-    );
-  }
-
   if (message?.button === 4) {
     return pizzaFrame();
-  }
+  } 
 
   return new NextResponse(
     getFrameHtmlResponse({
@@ -45,26 +34,6 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
         aspectRatio: '1:1',
       },
       postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
-    }),
-  );
-}
-
-
-// Frame functions
-function catFrame() {
-  return new NextResponse(
-    getFrameHtmlResponse({
-      buttons: [
-        {
-          action: 'post',
-          label: 'Conita',
-        },
-      ],
-      image: {
-        src: `${NEXT_PUBLIC_URL}/cat.png`,
-        aspectRatio: '1:1',
-      },
-      postUrl: `${NEXT_PUBLIC_URL}/api/frame/cat.ts`,
     }),
   );
 }

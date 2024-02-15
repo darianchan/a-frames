@@ -6,23 +6,12 @@ const frameMetadata = getFrameMetadata({
   buttons: [
     {
       action: 'post',
-      label: 'Auto',
+      label: 'Start Learning',
     },
-    {
-      action: 'post',
-      label: 'Busa',
-    },
-    {
-      action: 'post',
-      label: 'Agua',
-    },
-    {
-      action: 'post',
-      label: 'Caro',
-    },
+
   ],
   image: {
-    src: `${NEXT_PUBLIC_URL}/car.png`,
+    src: `${NEXT_PUBLIC_URL}/risklingo.png`,
     aspectRatio: '1:1',
   },
   postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
@@ -34,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Darian.xyz',
     description: 'LFG',
-    images: [`${NEXT_PUBLIC_URL}/park-3.png`],
+    images: [`${NEXT_PUBLIC_URL}/risklingo.png`],
   },
   other: {
     ...frameMetadata,
