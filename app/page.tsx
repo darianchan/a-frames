@@ -2,6 +2,10 @@ import { getFrameMetadata } from '@coinbase/onchainkit';
 import type { Metadata } from 'next';
 import { NEXT_PUBLIC_URL } from './config';
 
+/*
+  This is the starting frame to begin the game
+
+*/
 const frameMetadata = getFrameMetadata({
   buttons: [
     {
@@ -14,7 +18,7 @@ const frameMetadata = getFrameMetadata({
     src: `${NEXT_PUBLIC_URL}/risklingo.png`,
     aspectRatio: '1:1',
   },
-  postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
+  postUrl: `${NEXT_PUBLIC_URL}/api/catFrame`,
 });
 
 export const metadata: Metadata = {
