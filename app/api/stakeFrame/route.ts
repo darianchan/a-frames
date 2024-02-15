@@ -42,7 +42,7 @@ function stakeFrame() {
   return new NextResponse(
     getFrameHtmlResponse({
         input: {
-            text: '',
+            text: 'A',
         },
       buttons: [
         {
