@@ -1,6 +1,7 @@
 import { FrameRequest, getFrameMessage, getFrameHtmlResponse } from '@coinbase/onchainkit';
 import { NextRequest, NextResponse } from 'next/server';
 import { NEXT_PUBLIC_URL } from '../../config';
+import { incorrectFrame } from '../incorrectFrame';
 
 // Frame to render first spanish frame
 async function getResponse(req: NextRequest): Promise<NextResponse> {
@@ -21,22 +22,9 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
   // user will only have one option to choose from so it will always be the button 1 that is clicked
   if (message?.button === 1) {
     return spanishFrame1();
+  } else {
+    return incorrectFrame(`spanishFrame1`);
   }
-
-  return new NextResponse(
-    getFrameHtmlResponse({
-      buttons: [
-        {
-          label: `Story$$$$$: ${text} 🌲`,
-        },
-      ],
-      image: {
-        src: `${NEXT_PUBLIC_URL}/park-1.png`,
-        aspectRatio: '1:1',
-      },
-      postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
-    }),
-  );
 }
 
 // Frame functions
@@ -55,7 +43,7 @@ function spanishFrame1() {
       ],
       image: {
         src: `${NEXT_PUBLIC_URL}/spanish-1.png`,
-        aspectRatio: '1:1',
+        aspectRatio: '1.91:1',
       },
       postUrl: `${NEXT_PUBLIC_URL}/api/spanishFrame2`, // for next frame to return
     }),
