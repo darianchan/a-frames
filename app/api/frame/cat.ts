@@ -2,32 +2,105 @@ import { FrameRequest, getFrameMessage, getFrameHtmlResponse } from '@coinbase/o
 import { NextRequest, NextResponse } from 'next/server';
 import { NEXT_PUBLIC_URL } from '../../config';
 
-let catFrame = new NextResponse(
+async function getResponse(req: NextRequest): Promise<NextResponse> {
+  let accountAddress: string | undefined = '';
+  let text: string | undefined = '';
+
+  const body: FrameRequest = await req.json();
+  const { isValid, message } = await getFrameMessage(body, { neynarApiKey: 'NEYNAR_ONCHAIN_KIT' });
+
+  if (isValid) {
+    accountAddress = message.interactor.verified_accounts[0];
+  }
+
+  if (message?.input) {
+    text = message.input;
+  }
+
+  // it looks like all the buttons are indexed according to their order in the array
+  if (message?.button === 1) {
+    return catFrame();
+  } 
+
+  if (message?.button === 3) {
+    return NextResponse.redirect(
+      'https://www.google.com/search?q=cute+dog+pictures&tbm=isch&source=lnms',
+      { status: 302 },
+    );
+  }
+
+  if (message?.button === 4) {
+    return pizzaFrame();
+  }
+
+  return new NextResponse(
+    getFrameHtmlResponse({
+      buttons: [
+        {
+          label: `Story$$$$$: ${text} 🌲`,
+        },
+      ],
+      image: {
+        src: `${NEXT_PUBLIC_URL}/park-1.png`,
+        aspectRatio: '1:1',
+      },
+      postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
+    }),
+  );
+}
+
+
+// Frame functions
+function catFrame() {
+  return new NextResponse(
     getFrameHtmlResponse({
       buttons: [
         {
           action: 'post',
           label: 'Conita',
         },
-        {
-          action: 'post',
-          label: 'Dog',
-        },
-        {
-          action: 'post',
-          label: 'Bieber',
-        },
-        {
-          action: 'post',
-          label: 'Gato',
-        },
       ],
       image: {
         src: `${NEXT_PUBLIC_URL}/cat.png`,
         aspectRatio: '1:1',
       },
+      postUrl: `${NEXT_PUBLIC_URL}/api/frame/cat.ts`,
+    }),
+  );
+}
+
+function pizzaFrame() {
+  return new NextResponse(
+    getFrameHtmlResponse({
+      buttons: [
+        {
+          action: 'post',
+          label: 'Sandwich',
+        },
+        {
+          action: 'post',
+          label: 'Comida',
+        },
+        {
+          action: 'post',
+          label: 'Taco',
+        },
+        {
+          action: 'post',
+          label: 'Pizza',
+        },
+      ],
+      image: {
+        src: `${NEXT_PUBLIC_URL}/pizza.png`,
+        aspectRatio: '1:1',
+      },
       postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
     }),
   );
+}
 
-  export default catFrame
+export async function POST(req: NextRequest): Promise<Response> {
+  return getResponse(req);
+}
+
+export const dynamic = 'force-dynamic';

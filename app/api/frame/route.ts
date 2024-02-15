@@ -20,6 +20,8 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
   // it looks like all the buttons are indexed according to their order in the array
   if (message?.button === 1) {
     return catFrame();
+  } else {
+
   }
 
   if (message?.button === 3) {
@@ -76,7 +78,7 @@ function catFrame() {
         src: `${NEXT_PUBLIC_URL}/cat.png`,
         aspectRatio: '1:1',
       },
-      postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
+      postUrl: `${NEXT_PUBLIC_URL}/api/frame/cat.ts`,
     }),
   );
 }
