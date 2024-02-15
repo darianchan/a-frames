@@ -1,7 +1,9 @@
 import { FrameRequest, getFrameMessage, getFrameHtmlResponse } from '@coinbase/onchainkit';
 import { NextRequest, NextResponse } from 'next/server';
 import { NEXT_PUBLIC_URL } from '../../config';
+import { incorrectFrame } from '../incorrectFrame';
 
+// Frame to render first spanish frame
 async function getResponse(req: NextRequest): Promise<NextResponse> {
   let accountAddress: string | undefined = '';
   let text: string | undefined = '';
@@ -17,9 +19,11 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
     text = message.input;
   }
 
-  // it looks like all the buttons are indexed according to their order in the array
+  // user will only have one option to choose from so it will always be the button 1 that is clicked
   if (message?.button === 1) {
-    return stakeFrame();
+    return spanishFrame6();
+  } else if (message?.button === 2) {
+    return incorrectFrame(`spanishFrame5`);
   }
 
   return new NextResponse(
@@ -38,25 +42,27 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
   );
 }
 
-function stakeFrame() {
-  const getFrameHtmlResponseCall = getFrameHtmlResponse({
-    input: {
-      text: 'ETH',
-    },
-    buttons: [
-      {
-        action: 'post',
-        label: 'Submit stake',
+// Frame functions
+function spanishFrame6() {
+  return new NextResponse(
+    getFrameHtmlResponse({
+      buttons: [
+        {
+          action: 'post',
+          label: 'True',
+        },
+        {
+          action: 'post',
+          label: 'False',
+        },
+      ],
+      image: {
+        src: `${NEXT_PUBLIC_URL}/spanish-6.png`,
+        aspectRatio: '1:1',
       },
-    ],
-    image: {
-      src: `${NEXT_PUBLIC_URL}/stake.png`,
-      aspectRatio: '1:1',
-    },
-    postUrl: `${NEXT_PUBLIC_URL}/api/spanishFrame1`,
-  });
-
-  return new NextResponse(getFrameHtmlResponseCall);
+      postUrl: `${NEXT_PUBLIC_URL}/api/pizzaFrame`, // for next frame to return
+    }),
+  );
 }
 
 export async function POST(req: NextRequest): Promise<Response> {
