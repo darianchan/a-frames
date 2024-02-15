@@ -66,7 +66,7 @@ function catFrame() {
         src: `${NEXT_PUBLIC_URL}/cat.png`,
         aspectRatio: '1:1',
       },
-      postUrl: `${NEXT_PUBLIC_URL}/api/frame/pizza.ts`, // for next frame to return
+      postUrl: `${NEXT_PUBLIC_URL}/api/pizzaFrame`, // for next frame to return
     }),
   );
 }
