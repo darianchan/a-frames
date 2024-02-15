@@ -14,6 +14,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
     accountAddress = message.interactor.verified_accounts[0];
   }
   console.log("message here", message)
+  console.log("address here", accountAddress)
 
   if (message?.input) {
     text = message.input;
@@ -53,36 +54,6 @@ function catFrame() {
         aspectRatio: '1:1',
       },
       postUrl: `${NEXT_PUBLIC_URL}/api/pizzaFrame`, // for next frame to return
-    }),
-  );
-}
-
-function pizzaFrame() {
-  return new NextResponse(
-    getFrameHtmlResponse({
-      buttons: [
-        {
-          action: 'post',
-          label: 'Sandwich',
-        },
-        {
-          action: 'post',
-          label: 'Comida',
-        },
-        {
-          action: 'post',
-          label: 'Taco',
-        },
-        {
-          action: 'post',
-          label: 'Pizza',
-        },
-      ],
-      image: {
-        src: `${NEXT_PUBLIC_URL}/pizza.png`,
-        aspectRatio: '1:1',
-      },
-      postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
     }),
   );
 }
