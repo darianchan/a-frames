@@ -21,31 +21,20 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
 
   // user will only have one option to choose from so it will always be the button 1 that is clicked
   if (message?.button === 1) {
-    return spanishFrame6();
+    return thanksFrame();
   } else {
     return incorrectFrame(`spanishFrame5`);
   }
 }
 
 // Frame functions
-function spanishFrame6() {
+function thanksFrame() {
   return new NextResponse(
     getFrameHtmlResponse({
-      buttons: [
-        {
-          action: 'post',
-          label: 'True',
-        },
-        {
-          action: 'post',
-          label: 'False',
-        },
-      ],
       image: {
-        src: `${NEXT_PUBLIC_URL}/spanish-6.png`,
+        src: `${NEXT_PUBLIC_URL}/thanks.png`,
         aspectRatio: '1.91:1',
       },
-      postUrl: `${NEXT_PUBLIC_URL}/api/thanksFrame`, // for next frame to return
     }),
   );
 }
