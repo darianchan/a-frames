@@ -19,33 +19,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
 
   // it looks like all the buttons are indexed according to their order in the array
   if (message?.button === 1) {
-    return new NextResponse(
-      getFrameHtmlResponse({
-        buttons: [
-          {
-            action: 'post',
-            label: 'Conita',
-          },
-          {
-            action: 'post',
-            label: 'Dog',
-          },
-          {
-            action: 'post',
-            label: 'Bieber',
-          },
-          {
-            action: 'post',
-            label: 'Gato',
-          },
-        ],
-        image: {
-          src: `${NEXT_PUBLIC_URL}/cat.png`,
-          aspectRatio: '1:1',
-        },
-        postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
-      }),
-    );
+    return catFrame();
   }
 
   if (message?.button === 3) {
@@ -53,6 +27,10 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
       'https://www.google.com/search?q=cute+dog+pictures&tbm=isch&source=lnms',
       { status: 302 },
     );
+  }
+
+  if (message?.button === 4) {
+    return pizzaFrame();
   }
 
   return new NextResponse(
@@ -64,6 +42,68 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
       ],
       image: {
         src: `${NEXT_PUBLIC_URL}/park-1.png`,
+        aspectRatio: '1:1',
+      },
+      postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
+    }),
+  );
+}
+
+
+// Frame functions
+function catFrame() {
+  return new NextResponse(
+    getFrameHtmlResponse({
+      buttons: [
+        {
+          action: 'post',
+          label: 'Conita',
+        },
+        {
+          action: 'post',
+          label: 'Dog',
+        },
+        {
+          action: 'post',
+          label: 'Bieber',
+        },
+        {
+          action: 'post',
+          label: 'Gato',
+        },
+      ],
+      image: {
+        src: `${NEXT_PUBLIC_URL}/cat.png`,
+        aspectRatio: '1:1',
+      },
+      postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
+    }),
+  );
+}
+
+function pizzaFrame() {
+  return new NextResponse(
+    getFrameHtmlResponse({
+      buttons: [
+        {
+          action: 'post',
+          label: 'Sandwich',
+        },
+        {
+          action: 'post',
+          label: 'Comida',
+        },
+        {
+          action: 'post',
+          label: 'Taco',
+        },
+        {
+          action: 'post',
+          label: 'Pizza',
+        },
+      ],
+      image: {
+        src: `${NEXT_PUBLIC_URL}/pizza.png`,
         aspectRatio: '1:1',
       },
       postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
