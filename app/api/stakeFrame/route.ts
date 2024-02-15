@@ -20,7 +20,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
   // it looks like all the buttons are indexed according to their order in the array
   if (message?.button === 1) {
     return stakeFrame();
-  } 
+  }
 
   return new NextResponse(
     getFrameHtmlResponse({
@@ -39,24 +39,26 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
 }
 
 function stakeFrame() {
-  return new NextResponse(
-    getFrameHtmlResponse({
-        input: {
-            text: 'A',
-        },
-      buttons: [
-        {
-          action: 'post',
-          label: 'Submit stake',
-        }
-      ],
-      image: {
-        src: `${NEXT_PUBLIC_URL}/park-1.png`,
-        aspectRatio: '1:1',
+  const getFrameHtmlResponseCall = getFrameHtmlResponse({
+    input: {
+      text: 'ETH',
+    },
+    buttons: [
+      {
+        action: 'post',
+        label: 'Submit stake',
       },
-      postUrl: `${NEXT_PUBLIC_URL}/api/catFrame`,
-    }),
-  );
+    ],
+    image: {
+      src: `${NEXT_PUBLIC_URL}/stake.png`,
+      aspectRatio: '1:1',
+    },
+    postUrl: `${NEXT_PUBLIC_URL}/api/catFrame`,
+  });
+
+  console.log(getFrameHtmlResponseCall);
+
+  return new NextResponse(getFrameHtmlResponseCall);
 }
 
 export async function POST(req: NextRequest): Promise<Response> {
