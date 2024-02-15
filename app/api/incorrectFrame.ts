@@ -13,7 +13,7 @@ export function incorrectFrame(returnFrame: string) {
       ],
       image: {
         src: `${NEXT_PUBLIC_URL}/incorrect.png`,
-        aspectRatio: '1:1',
+        aspectRatio: '1.91:1',
       },
       postUrl: `${NEXT_PUBLIC_URL}/api/${returnFrame}`, // for next frame to return
     }),

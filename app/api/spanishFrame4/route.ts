@@ -20,7 +20,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
   }
 
   // user will only have one option to choose from so it will always be the button 1 that is clicked
-  if (message?.button === 1) {
+  if (message?.button === 2) {
     return spanishFrame4();
   } else {
     return incorrectFrame(`spanishFrame3`);
