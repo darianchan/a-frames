@@ -13,8 +13,6 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
   if (isValid) {
     accountAddress = message.interactor.verified_accounts[0];
   }
-  console.log("message here", message)
-  console.log("address here", accountAddress)
 
   if (message?.input) {
     text = message.input;
@@ -24,6 +22,21 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
   if (message?.button === 1) {
     return catFrame();
   }
+
+  return new NextResponse(
+    getFrameHtmlResponse({
+      buttons: [
+        {
+          label: `Story$$$$$: ${text} 🌲`,
+        },
+      ],
+      image: {
+        src: `${NEXT_PUBLIC_URL}/park-1.png`,
+        aspectRatio: '1:1',
+      },
+      postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
+    }),
+  );
 }
 
 
@@ -54,6 +67,36 @@ function catFrame() {
         aspectRatio: '1:1',
       },
       postUrl: `${NEXT_PUBLIC_URL}/api/pizzaFrame`, // for next frame to return
+    }),
+  );
+}
+
+function pizzaFrame() {
+  return new NextResponse(
+    getFrameHtmlResponse({
+      buttons: [
+        {
+          action: 'post',
+          label: 'Sandwich',
+        },
+        {
+          action: 'post',
+          label: 'Comida',
+        },
+        {
+          action: 'post',
+          label: 'Taco',
+        },
+        {
+          action: 'post',
+          label: 'Pizza',
+        },
+      ],
+      image: {
+        src: `${NEXT_PUBLIC_URL}/pizza.png`,
+        aspectRatio: '1:1',
+      },
+      postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
     }),
   );
 }
