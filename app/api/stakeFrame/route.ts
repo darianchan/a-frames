@@ -42,7 +42,7 @@ function stakeFrame() {
   return new NextResponse(
     getFrameHtmlResponse({
         input: {
-            text: 'Enter the amount of ETH you want to stake',
+            text: '',
         },
       buttons: [
         {
