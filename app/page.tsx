@@ -12,13 +12,12 @@ const frameMetadata = getFrameMetadata({
       action: 'post',
       label: 'Start Learning',
     },
-
   ],
   image: {
     src: `${NEXT_PUBLIC_URL}/risklingo.png`,
     aspectRatio: '1:1',
   },
-  postUrl: `${NEXT_PUBLIC_URL}/api/catFrame`,
+  postUrl: `${NEXT_PUBLIC_URL}/api/stakeFrame`,
 });
 
 export const metadata: Metadata = {
