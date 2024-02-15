@@ -2,7 +2,7 @@ import { getFrameHtmlResponse } from '@coinbase/onchainkit';
 import { NextResponse } from 'next/server';
 import { NEXT_PUBLIC_URL } from '../config';
 
-export function incorrectFrame(returnFrame: string) {
+export function incorrectFrame({ returnFrame }: { returnFrame: string }) {
   return new NextResponse(
     getFrameHtmlResponse({
       buttons: [

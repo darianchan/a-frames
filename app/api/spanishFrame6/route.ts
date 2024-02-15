@@ -23,7 +23,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
   if (message?.button === 1) {
     return spanishFrame6();
   } else {
-    return incorrectFrame(`spanishFrame6`);
+    return incorrectFrame({ returnFrame: 'spanishFrame6' });
   }
 }
 
